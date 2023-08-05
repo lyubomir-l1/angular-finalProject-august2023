@@ -13,6 +13,11 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { IncomesComponent } from './incomes/incomes.component';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { MonthlyReportComponent } from './monthly-report/monthly-report.component';
+import { AnnualReportComponent } from './annual-report/annual-report.component';
+import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';
 
 
 @NgModule({
@@ -23,6 +28,11 @@ import { IncomesComponent } from './incomes/incomes.component';
     CounterComponent,
     FetchDataComponent,
     IncomesComponent,
+    ExpensesComponent,
+    CategoriesComponent,
+    MonthlyReportComponent,
+    AnnualReportComponent,
+    LoanCalculatorComponent,
     
   ],
   imports: [
@@ -35,6 +45,8 @@ import { IncomesComponent } from './incomes/incomes.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'incomes', component: IncomesComponent },
+      { path: 'expenses', component: ExpensesComponent },
+      { path: 'categories', component: CategoriesComponent },
     ])
   ],
   providers: [
