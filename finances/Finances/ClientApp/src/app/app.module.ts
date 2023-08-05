@@ -47,6 +47,9 @@ import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.compo
       { path: 'incomes', component: IncomesComponent },
       { path: 'expenses', component: ExpensesComponent },
       { path: 'categories', component: CategoriesComponent },
+      { path: 'monthly-report', component: MonthlyReportComponent },
+      { path: 'anual-report', component: AnnualReportComponent },
+      { path: 'loan-calculator', component: LoanCalculatorComponent },
     ])
   ],
   providers: [
