@@ -1,10 +1,9 @@
 using AutoMapper;
-using Finances.Common.Mapping;
 using Finances.Models;
 
 namespace Finances.Services.Incomes.Queries.GetAllIncomes
 {
-    public class IncomeDto : IMapFrom<Income>
+    public class IncomeDto
     {
         public int Id { get; set; }
 
@@ -18,11 +17,14 @@ namespace Finances.Services.Incomes.Queries.GetAllIncomes
 
         public string Note { get; set; } = default!;
 
-        public void CreateMappings(Profile configuration)
+        private class Mapping : Profile
         {
-            configuration.CreateMap<Income, IncomeDto>()
-                .ForMember(x => x.Date, y => y.MapFrom(src => src.Date.ToShortDateString()))
-                .ForMember(x => x.Category, y => y.MapFrom(src => src.Category.Name));
+            public Mapping()
+            {
+                CreateMap<Income, IncomeDto>()
+                    .ForMember(x => x.Date, y => y.MapFrom(src => src.Date.ToShortDateString()))
+                    .ForMember(x => x.Category, y => y.MapFrom(src => src.Category.Name));
+            }
         }
     }
 }

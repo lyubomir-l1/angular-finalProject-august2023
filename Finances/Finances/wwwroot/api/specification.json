@@ -1,0 +1,1309 @@
+{
+  "x-generator": "NSwag v13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Finances API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/ExpenseCategory/GetAll": {
+      "get": {
+        "tags": [
+          "ExpenseCategory"
+        ],
+        "operationId": "ExpenseCategory_GetAll",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpenseCategoriesListVm"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ExpenseCategory/GetExpensesByCategory": {
+      "get": {
+        "tags": [
+          "ExpenseCategory"
+        ],
+        "operationId": "ExpenseCategory_GetExpensesByCategory",
+        "parameters": [
+          {
+            "name": "month",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpensesByCategoryListVm"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ExpenseCategory": {
+      "post": {
+        "tags": [
+          "ExpenseCategory"
+        ],
+        "operationId": "ExpenseCategory_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateExpenseCategoryCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ExpenseCategory/{id}": {
+      "delete": {
+        "tags": [
+          "ExpenseCategory"
+        ],
+        "operationId": "ExpenseCategory_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/IncomeCategory/GetAll": {
+      "get": {
+        "tags": [
+          "IncomeCategory"
+        ],
+        "operationId": "IncomeCategory_GetAll",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IncomeCategoriesListVm"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/IncomeCategory/GetIncomesByCategory": {
+      "get": {
+        "tags": [
+          "IncomeCategory"
+        ],
+        "operationId": "IncomeCategory_GetIncomesByCategory",
+        "parameters": [
+          {
+            "name": "month",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IncomesByCategoryListVm"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/IncomeCategory": {
+      "post": {
+        "tags": [
+          "IncomeCategory"
+        ],
+        "operationId": "IncomeCategory_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIncomeCategoryCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/IncomeCategory/{id}": {
+      "delete": {
+        "tags": [
+          "IncomeCategory"
+        ],
+        "operationId": "IncomeCategory_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Income/GetAll": {
+      "get": {
+        "tags": [
+          "Income"
+        ],
+        "operationId": "Income_GetAll",
+        "parameters": [
+          {
+            "name": "month",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IncomesListVm"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Income/{id}": {
+      "get": {
+        "tags": [
+          "Income"
+        ],
+        "operationId": "Income_Get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IncomeVm"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Income"
+        ],
+        "operationId": "Income_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Income/GetByYear": {
+      "get": {
+        "tags": [
+          "Income"
+        ],
+        "operationId": "Income_GetByYear",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IncomesByYearListVm"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Income": {
+      "post": {
+        "tags": [
+          "Income"
+        ],
+        "operationId": "Income_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIncomeCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Income"
+        ],
+        "operationId": "Income_Update",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateIncomeCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/CashflowType/GetAll": {
+      "get": {
+        "tags": [
+          "CashflowType"
+        ],
+        "operationId": "CashflowType_GetAll",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CashflowTypesVm"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Expense/GetAll": {
+      "get": {
+        "tags": [
+          "Expense"
+        ],
+        "operationId": "Expense_GetAll",
+        "parameters": [
+          {
+            "name": "month",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ExpenseDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Expense/{id}": {
+      "get": {
+        "tags": [
+          "Expense"
+        ],
+        "operationId": "Expense_Get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpenseVm"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Expense"
+        ],
+        "operationId": "Expense_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Expense": {
+      "get": {
+        "tags": [
+          "Expense"
+        ],
+        "operationId": "Expense_GetByYear",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpensesByYearListVm"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Expense"
+        ],
+        "operationId": "Expense_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateExpenseCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Expense"
+        ],
+        "operationId": "Expense_Update",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateExpenseCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_configuration/{clientId}": {
+      "get": {
+        "tags": [
+          "OidcConfiguration"
+        ],
+        "operationId": "OidcConfiguration_GetClientRequestParameters",
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "WeatherForecast_Get",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ExpenseCategoriesListVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "typeId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ExpensesByCategoryListVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expenseCategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpenseByCategoryVm"
+            }
+          },
+          "totals": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      },
+      "ExpenseByCategoryVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "typeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeDescription": {
+            "type": "string"
+          },
+          "sum": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      },
+      "CreateExpenseCategoryCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "typeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "string"
+          }
+        }
+      },
+      "IncomeCategoriesListVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IncomeCategoryDto"
+            }
+          }
+        }
+      },
+      "IncomeCategoryDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "typeId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "IncomesByCategoryListVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "incomeCategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IncomeByCategoryDto"
+            }
+          },
+          "totals": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      },
+      "IncomeByCategoryDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "typeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeDescription": {
+            "type": "string"
+          },
+          "sum": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      },
+      "CreateIncomeCategoryCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "typeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "string"
+          }
+        }
+      },
+      "IncomesListVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IncomeDto"
+            }
+          }
+        }
+      },
+      "IncomeDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "merchant": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "category": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "IncomeVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "merchant": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "total": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "note": {
+            "type": "string"
+          },
+          "categoryId": {
+            "type": "string"
+          },
+          "categoryName": {
+            "type": "string"
+          }
+        }
+      },
+      "IncomesByYearListVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "incomeSums": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IncomeByYearDto"
+            }
+          },
+          "totals": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      },
+      "IncomeByYearDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "month": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "monthName": {
+            "type": "string"
+          },
+          "sum": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      },
+      "CreateIncomeCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "merchant": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateIncomeCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "merchant": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "string"
+          }
+        }
+      },
+      "CashflowTypesVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ExpenseDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "merchant": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "category": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "ExpenseVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "merchant": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "total": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "note": {
+            "type": "string"
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "categoryName": {
+            "type": "string"
+          }
+        }
+      },
+      "ExpensesByYearListVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expenseSums": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpenseByYearDto"
+            }
+          },
+          "totals": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      },
+      "ExpenseByYearDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "month": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "monthName": {
+            "type": "string"
+          },
+          "sum": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      },
+      "CreateExpenseCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "merchant": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "note": {
+            "type": "string"
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateExpenseCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "merchant": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "note": {
+            "type": "string"
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "string"
+          }
+        }
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      }
+    }
+  }
+}

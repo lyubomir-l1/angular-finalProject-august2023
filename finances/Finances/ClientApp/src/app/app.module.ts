@@ -18,6 +18,8 @@ import { CategoriesComponent } from './categories/categories.component';
 import { MonthlyReportComponent } from './monthly-report/monthly-report.component';
 import { AnnualReportComponent } from './annual-report/annual-report.component';
 import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';
+import { FilterComponent } from './shared/filter/filter.component';
+import { InputComponent } from './shared/input/input.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.compo
     MonthlyReportComponent,
     AnnualReportComponent,
     LoanCalculatorComponent,
+    FilterComponent,
+    InputComponent,
     
   ],
   imports: [

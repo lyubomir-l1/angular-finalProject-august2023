@@ -10,7 +10,7 @@ namespace Finance.WebApp.Controllers
     {
         //GET: api/IncomeCategory/GetAll
         [HttpGet("[action]")]
-        public async Task<ActionResult<List<IncomeCategoryVm>>> GetAll(string userId)
+        public async Task<ActionResult<IncomeCategoriesListVm>> GetAll(string userId)
         {
             var result = await Mediator.Send(new GetIncomeCategoriesListQuery() { UserId = userId });
            

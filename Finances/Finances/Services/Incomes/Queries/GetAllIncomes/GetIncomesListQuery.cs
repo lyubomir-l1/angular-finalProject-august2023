@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Finances.Services.Incomes.Queries.GetAllIncomes
 {
-    public class GetIncomesListQuery : IRequest<List<IncomeDto>>
+    public class GetIncomesListQuery : IRequest<IncomesListVm>
     {
         public int Month { get; set; }
 
@@ -27,7 +27,7 @@ namespace Finances.Services.Incomes.Queries.GetAllIncomes
 
 
             RuleFor(e => e.Year)
-                .GreaterThan(2020)
+                .GreaterThan(2000)
                 .LessThanOrEqualTo(2120)
                 .WithMessage("Invalid year");
 
@@ -38,7 +38,7 @@ namespace Finances.Services.Incomes.Queries.GetAllIncomes
         }
     }
 
-    public class GetAllIncomesListQueryHandler : IRequestHandler<GetIncomesListQuery, List<IncomeDto>>
+    public class GetAllIncomesListQueryHandler : IRequestHandler<GetIncomesListQuery, IncomesListVm>
     {
         private readonly IApplicationDbContext context;
         private readonly IMapper mapper;
@@ -49,14 +49,17 @@ namespace Finances.Services.Incomes.Queries.GetAllIncomes
             this.mapper = mapper;
         }
 
-        public async Task<List<IncomeDto>> Handle(GetIncomesListQuery request, CancellationToken cancellationToken)
+        public async Task<IncomesListVm> Handle(GetIncomesListQuery request, CancellationToken cancellationToken)
         {
-            return await context.Incomes
+            return new IncomesListVm
+            {
+                List = await context.Incomes
                     .Where(x => x.Date.Month == request.Month && x.Date.Year == request.Year && x.UserId == request.UserId)
                     .OrderByDescending(x => x.Id)
                     .Include(x => x.Category)
                     .ProjectTo<IncomeDto>(mapper.ConfigurationProvider)
-                    .ToListAsync(cancellationToken);
+                    .ToListAsync(cancellationToken)
+            };
         }
     }
 }

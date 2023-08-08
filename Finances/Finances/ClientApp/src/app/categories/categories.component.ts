@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Income } from '../incomes/incomes.component';
+//import { Income } from '../incomes/incomes.component';
 import { Expense } from '../expenses/expenses.component';
 
 
@@ -24,8 +24,7 @@ export interface IncomeCategory {
   UserId: string;
   User: string;
   TypeId: number;
-  Incomes: Income[];
-
+ 
 }
 
 export interface ExpenseCategory {

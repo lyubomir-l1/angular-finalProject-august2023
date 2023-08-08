@@ -4,7 +4,7 @@ using Finances.Models;
 
 namespace Finances.Services.IncomeCategories.Queries.GetAll
 {
-    public class IncomeCategoryVm : IMapFrom<IncomeCategory>
+    public class IncomeCategoryDto : IMapFrom<IncomeCategory>
     {
         public int Id { get; set; }
 
@@ -12,9 +12,12 @@ namespace Finances.Services.IncomeCategories.Queries.GetAll
 
         public int TypeId { get; set; }
 
-        public void CreateMappings(Profile configuration)
+        private class Mapping : Profile
         {
-            configuration.CreateMap<IncomeCategory, IncomeCategoryVm>();
+            public Mapping()
+            {
+                CreateMap<IncomeCategory, IncomeCategoryDto>();
+            }
         }
     }
 }

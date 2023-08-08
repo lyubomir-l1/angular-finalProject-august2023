@@ -6,12 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Finances.Services.IncomeCategories.Queries.GetAll
 {
-    public class GetIncomeCategoriesListQuery : IRequest<List<IncomeCategoryVm>>
+    public class GetIncomeCategoriesListQuery : IRequest<IncomeCategoriesListVm>
     {
         public string UserId { get; set; } = default!;
     }
 
-    public class GetAllIncomeCategoriesListQueryHandler : IRequestHandler<GetIncomeCategoriesListQuery, List<IncomeCategoryVm>>
+    public class GetAllIncomeCategoriesListQueryHandler : IRequestHandler<GetIncomeCategoriesListQuery, IncomeCategoriesListVm>
     {
         private readonly IApplicationDbContext context;
         private readonly IMapper mapper;
@@ -22,14 +22,17 @@ namespace Finances.Services.IncomeCategories.Queries.GetAll
             this.mapper = mapper;
         }
 
-        public async Task<List<IncomeCategoryVm>> Handle(GetIncomeCategoriesListQuery request, CancellationToken cancellationToken)
+        public async Task<IncomeCategoriesListVm> Handle(GetIncomeCategoriesListQuery request, CancellationToken cancellationToken)
         {
-            return await context.IncomeCategories
+            return new IncomeCategoriesListVm
+            {
+                List = await context.IncomeCategories
                     .Where(ic => ic.UserId == request.UserId)
                     .OrderBy(ec => ec.TypeId)
                     .ThenBy(ec => ec.Name)
-                    .ProjectTo<IncomeCategoryVm>(mapper.ConfigurationProvider)
-                    .ToListAsync(cancellationToken);
+                    .ProjectTo<IncomeCategoryDto>(mapper.ConfigurationProvider)
+                    .ToListAsync(cancellationToken)
+            };            
         }
     }
 }
