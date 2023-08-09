@@ -1,20 +1,12 @@
 ﻿using AutoMapper;
 using Finances.Common.Mapping;
 using Finances.Models;
+using Finances.Services.ExpenseCategories.Queries.GetAll;
 
 namespace Finances.Services.ExpenseCategories.Queries.GetAll
 {
     public class ExpenseCategoriesListVm : IMapFrom<ExpenseCategory>
     {
-        public string Id { get; set; } = default!;
-
-        public string Name { get; set; } = default!;
-
-        public int TypeId { get; set; }
-
-        public void Mapping(Profile profile)
-        {
-            profile.CreateMap<ExpenseCategory, ExpenseCategoriesListVm>();
-        }
+        public IList<ExpenseCategoryDto> List { get; set; }
     }
 }

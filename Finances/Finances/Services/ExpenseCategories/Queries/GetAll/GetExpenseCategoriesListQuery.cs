@@ -6,12 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Finances.Services.ExpenseCategories.Queries.GetAll
 {
-    public class GetExpenseCategoriesListQuery : IRequest<List<ExpenseCategoriesListVm>>
+    public class GetExpenseCategoriesListQuery : IRequest<ExpenseCategoriesListVm>
     {
         public string UserId { get; set; } = default!;
     }
 
-    public class GetExpenseCategoriesListQueryHandler : IRequestHandler<GetExpenseCategoriesListQuery, List<ExpenseCategoriesListVm>>
+    public class GetExpenseCategoriesListQueryHandler : IRequestHandler<GetExpenseCategoriesListQuery, ExpenseCategoriesListVm>
     {
         private readonly IApplicationDbContext context;
         private readonly IMapper mapper;
@@ -22,14 +22,18 @@ namespace Finances.Services.ExpenseCategories.Queries.GetAll
             this.mapper = mapper;
         }
 
-        public async Task<List<ExpenseCategoriesListVm>> Handle(GetExpenseCategoriesListQuery request, CancellationToken cancellationToken)
+        public async Task<ExpenseCategoriesListVm> Handle(GetExpenseCategoriesListQuery request, CancellationToken cancellationToken)
         {
-            return await context.ExpenseCategories
+            return new ExpenseCategoriesListVm
+            {
+                List = await context.ExpenseCategories
                     .Where(ec => ec.UserId == request.UserId)
                     .OrderBy(ec => ec.TypeId)
                     .ThenBy(ec => ec.Name)
-                    .ProjectTo<ExpenseCategoriesListVm>(mapper.ConfigurationProvider)
-                    .ToListAsync(cancellationToken);
+                    .ProjectTo<ExpenseCategoryDto>(mapper.ConfigurationProvider)
+                    .ToListAsync(cancellationToken)
+            };
+
         }
     }
 }

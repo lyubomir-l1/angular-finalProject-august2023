@@ -1,1 +1,41 @@
-<p>annual-report works!</p>
+<h2>Annual Report</h2>
+<br/>
+<form>
+    <div class="row">
+      
+      <div class="col">
+        <input name="year" type="text" min="2000" max="2120" class="form-control" placeholder="Year" [(ngModel)]="selectedYear">
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary" (click)="getAnnualReport(selectedYear)" >Filter</button>
+      </div>
+      <table class="table">
+        <thead class='thead-dark'>
+            <tr>
+                <th>Month</th>
+                <th class="centered">Income</th>
+                <th class="centered">Expense</th>
+                <th class="centered">Savings</th>
+                <th class="centered">Savings %</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let income of incomes; let i = index">
+                <td>{{income.monthName}}</td>
+                <td>{{income.sum}}</td>
+                <td>{{expenses[i].sum}}</td>
+                <td>{{(income.sum! - expenses[i].sum!).toFixed(2)}}</td>
+                <td>{{income.sum! === 0 ? 0 : (((income.sum! - expenses[i].sum!) / income.sum!) * 100).toFixed(2)}}</td>
+
+            </tr>
+            <tr class="table-success totals-row">
+                <td>Totals</td>
+                <td class="centered">{{totalIncomes}} lv.</td>
+                <td class="centered">{{totalExpenses}} lv.</td>
+                <td class="centered">{{savings}} lv.</td>
+                <td class="centered">{{savingsPer.toFixed(2)}}%</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</form>

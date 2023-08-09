@@ -808,8 +808,21 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpenseCategoryDto"
+            }
+          }
+        }
+      },
+      "ExpenseCategoryDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
           "id": {
-            "type": "string"
+            "type": "integer",
+            "format": "int32"
           },
           "name": {
             "type": "string"

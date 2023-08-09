@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateExpenseCommand, ExpenseCategoriesListVm, ExpenseCategoryClient, ExpenseClient, ExpenseDto, UpdateExpenseCommand } from '../web-api-client';
+import { CreateExpenseCommand, ExpenseCategoriesListVm, ExpenseCategoryClient, ExpenseCategoryDto, ExpenseClient, ExpenseDto, UpdateExpenseCommand } from '../web-api-client';
 
 @Component({
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
   styleUrls: ['./expenses.component.css']
 })
-export class ExpensesComponent implements OnInit {
+ export class ExpensesComponent implements OnInit {
   userId: string = '';
   selectedMonth = new Date().getMonth() + 1;
   selectedYear = new Date().getFullYear();
   expenses: ExpenseDto[] = [];
   createCommand: CreateExpenseCommand = new CreateExpenseCommand();
-  expenseCategories: ExpenseCategoriesListVm[] = [];
+  expenseCategories: ExpenseCategoryDto[] = [];
   updateCommand: UpdateExpenseCommand = new UpdateExpenseCommand();
 
 
@@ -28,20 +28,22 @@ export class ExpensesComponent implements OnInit {
     this.userId = parsedUser.profile.sub;
     this.expenseCategoryClient.expenseCategory_GetAll(this.userId).subscribe(result => {
     this.expenseCategories = result.list!;
+    console.log(this.expenseCategories);
+    
     this.createCommand.userId = this.userId;
       
    }, error => console.error(error));
     
 
     this.expensesClient.expense_GetAll(this.selectedMonth, this.selectedYear, this.userId).subscribe(result => {
-      this.expenses = result.list!;
+      this.expenses = result;
     }, error => console.error(error));
   }
 
 
   filterExpenses(month: number, year: number) {
     this.expensesClient.expense_GetAll(month, year, this.userId).subscribe(result => {
-      this.expenses = result.list!;
+      this.expenses = result;
     }, error => console.error(error));
   }
 
@@ -51,14 +53,14 @@ export class ExpensesComponent implements OnInit {
       this.createCommand = new CreateExpenseCommand();
       this.createCommand.userId = this.userId;
       this.expensesClient.expense_GetAll(this.selectedMonth, this.selectedYear, this.userId).subscribe(result => {
-        this.expenses = result.list!;
+        this.expenses = result;
       }, error => console.error(error));
     }, error => console.error(error));
   }
   deleteExpense(id: number){
     this.expensesClient.expense_Delete(id).subscribe(result => {
       this.expensesClient.expense_GetAll(this.selectedMonth, this.selectedYear, this.userId).subscribe(result => {
-        this.expenses = result.list!;
+        this.expenses = result;
       }, error => console.error(error));
     }, error => console.error(error));
   }

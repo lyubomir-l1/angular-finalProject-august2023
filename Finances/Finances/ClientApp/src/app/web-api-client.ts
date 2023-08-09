@@ -1444,11 +1444,55 @@ export class WeatherForecastClient implements IWeatherForecastClient {
 }
 
 export class ExpenseCategoriesListVm implements IExpenseCategoriesListVm {
-    id?: string;
+    list?: ExpenseCategoryDto[];
+
+    constructor(data?: IExpenseCategoriesListVm) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["list"])) {
+                this.list = [] as any;
+                for (let item of _data["list"])
+                    this.list!.push(ExpenseCategoryDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): ExpenseCategoriesListVm {
+        data = typeof data === 'object' ? data : {};
+        let result = new ExpenseCategoriesListVm();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.list)) {
+            data["list"] = [];
+            for (let item of this.list)
+                data["list"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IExpenseCategoriesListVm {
+    list?: ExpenseCategoryDto[];
+}
+
+export class ExpenseCategoryDto implements IExpenseCategoryDto {
+    id?: number;
     name?: string;
     typeId?: number;
 
-    constructor(data?: IExpenseCategoriesListVm) {
+    constructor(data?: IExpenseCategoryDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -1465,9 +1509,9 @@ export class ExpenseCategoriesListVm implements IExpenseCategoriesListVm {
         }
     }
 
-    static fromJS(data: any): ExpenseCategoriesListVm {
+    static fromJS(data: any): ExpenseCategoryDto {
         data = typeof data === 'object' ? data : {};
-        let result = new ExpenseCategoriesListVm();
+        let result = new ExpenseCategoryDto();
         result.init(data);
         return result;
     }
@@ -1481,8 +1525,8 @@ export class ExpenseCategoriesListVm implements IExpenseCategoriesListVm {
     }
 }
 
-export interface IExpenseCategoriesListVm {
-    id?: string;
+export interface IExpenseCategoryDto {
+    id?: number;
     name?: string;
     typeId?: number;
 }
