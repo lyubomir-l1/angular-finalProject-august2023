@@ -1254,7 +1254,8 @@
             "format": "decimal"
           },
           "note": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "categoryId": {
             "type": "integer",
@@ -1284,7 +1285,8 @@
             "format": "decimal"
           },
           "note": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "categoryId": {
             "type": "integer",

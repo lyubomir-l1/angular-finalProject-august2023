@@ -7,8 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
@@ -21,14 +19,11 @@ import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.compo
 import { FilterComponent } from './shared/filter/filter.component';
 import { InputComponent } from './shared/input/input.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     IncomesComponent,
     ExpensesComponent,
     CategoriesComponent,
@@ -36,8 +31,7 @@ import { InputComponent } from './shared/input/input.component';
     AnnualReportComponent,
     LoanCalculatorComponent,
     FilterComponent,
-    InputComponent,
-    
+    InputComponent   
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -46,14 +40,12 @@ import { InputComponent } from './shared/input/input.component';
     ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'incomes', component: IncomesComponent },
-      { path: 'expenses', component: ExpensesComponent },
-      { path: 'categories', component: CategoriesComponent },
-      { path: 'monthly-report', component: MonthlyReportComponent },
-      { path: 'anual-report', component: AnnualReportComponent },
-      { path: 'loan-calculator', component: LoanCalculatorComponent },
+      { path: 'incomes', component: IncomesComponent, canActivate: [AuthorizeGuard] },
+      { path: 'expenses', component: ExpensesComponent, canActivate: [AuthorizeGuard] },
+      { path: 'categories', component: CategoriesComponent, canActivate: [AuthorizeGuard] },
+      { path: 'monthly-report', component: MonthlyReportComponent, canActivate: [AuthorizeGuard] },
+      { path: 'anual-report', component: AnnualReportComponent, canActivate: [AuthorizeGuard] },
+      { path: 'loan-calculator', component: LoanCalculatorComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [

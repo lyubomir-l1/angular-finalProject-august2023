@@ -1,14 +1,147 @@
-<h1>Hello, world!</h1>
-<p>Welcome to your new single-page application, built with:</p>
-<ul>
-  <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>
-  <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>
-  <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>
-</ul>
-<p>To help you get started, we've also set up:</p>
-<ul>
-  <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>
-  <li><strong>Angular CLI integration</strong>. In development mode, there's no need to run <code>ng serve</code>. It runs in the background automatically, so your client-side resources are dynamically built on demand and the page refreshes when you modify any file.</li>
-  <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and your <code>dotnet publish</code> configuration automatically invokes <code>ng build</code> to produce minified, ahead-of-time compiled JavaScript files.</li>
-</ul>
-<p>The <code>ClientApp</code> subdirectory is a standard Angular CLI application. If you open a command prompt in that directory, you can run any <code>ng</code> command (e.g., <code>ng test</code>), or use <code>npm</code> to install extra packages into it.</p>
+<div class="container">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="assets/img/slide1.jpg" alt="First slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h1>MY PERSONAL FINANCES</h1>
+          <h4>Manage your finances easaly. Start today!</h4>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="assets/img/slide2.jpg" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="assets/img/slide3.jpg" alt="Third slide">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <!-- <span class="sr-only">Previous</span> -->
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <!-- <span class="sr-only">Next</span> -->
+    </a>
+  </div>
+</div>
+<br />
+<br />
+<br />
+
+<div class="container">
+  <div style="text-align: center;" class="row">
+    <div style="border: 2px solid #E5E5E5; padding: 30px 10px" class="col-md-3">
+      <h3 style="color: #218838;">Incomes</h3>
+      <p>It is better to have more passive incomes. Thats why you have to invest.</p>
+      <button class="btn btn-success" routerLink="/incomes">Manage</button>
+    </div>
+    <div style="border: 2px solid #E5E5E5; padding: 30px 10px" class="col-md-3">
+      <h3 style="color: #C82333;">Expenses</h3>
+      <p>Expenses can be optimized for bigger monthly net cashflow.</p>
+      <button class="btn btn-danger" routerLink="/expenses">Manage</button>
+    </div>
+    <div style="border: 2px solid #E5E5E5; padding: 30px 10px" class="col-md-3">
+      <h3 style="color: #E0A800;">Monthly Report</h3>
+      <p>Attention to 'Pay to Yourself' row. Save your money before taxes.</p>
+      <button class="btn btn-warning" routerLink="/monthly-report">Manage</button>
+    </div>
+    <div style="border: 2px solid #E5E5E5; padding: 30px 10px" class="col-md-3">
+      <h3 style="color: #0069D9;">Annual Report</h3>
+      <p>Check your year savings. You can have more money for investments.</p>
+      <button class="btn btn-primary" routerLink="/annual-report">Manage</button>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<br />
+
+<div class="container">
+  <div class="row">
+    <h2 style="text-align: center;">TEST OUR SPECIAL ADVISOR</h2>
+  </div>
+  <br />
+  <div class="row">
+    <form>
+      <div class="row">
+        <div class="col-md-3">
+          <input type="number" name="age" min="1" max="100" class="form-control" placeholder="Age:" [(ngModel)]="age" (ngModelChange)="age=$event">
+        </div>
+        <div class="col-md-3">
+          <input type="number" name="income" step="0.01" class="form-control" placeholder="Monthly Income:" [(ngModel)]="income" (ngModelChange)="income=$event">
+        </div>
+        <div class="col-md-3">
+          <input type="number" name="savings" step="0.01" class="form-control" placeholder="Monthly Savings:" [(ngModel)]="savings" (ngModelChange)="savings=$event">
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary" (click)="getAdvise()">Get Advise</button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-secondary" (click)="resetState()">Clean Form</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <br />
+  <div class="row">
+    <div class="jumbotron" style="border-radius: 5px;" [style.background-color]="messageColor">
+      <p class="lead" style="color: white; padding: 40px 0 40px 0; text-align: center; font-size: 24px; font-weight: bold;">{{message}}</p>
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+<br />
+
+<div class="container" id="webisites">
+  <div class="row">
+    <h2 style="text-align: center;">USEFUL WEBSITES</h2>
+  </div>
+  <br />
+  <br />
+  <div class="row">
+    <div class="col-md-2">
+      <a href="https://finance.yahoo.com/"><img src="assets/img/yahoo.png" alt="yahoo" style="width: 100%" /></a>
+    </div>
+    <div class="col-md-2">
+      <a href="https://www.kiplinger.com/"><img src="assets/img/kiplinger.png" alt="kiplinger"
+          style="width: 100%" /></a>
+    </div>
+    <div class="col-md-2">
+      <a href="https://edition.cnn.com/business/"><img src="assets/img/cnn-business.png" alt="cnn-business"
+          style="width: 100%" /></a>
+    </div>
+    <div class="col-md-2">
+      <a href="https://www.thestreet.com/"><img src="assets/img/the-street.jpg" alt="the-street"
+          style="width: 100%" /></a>
+    </div>
+    <div class="col-md-2">
+      <a href="https://www.thisismoney.co.uk/"><img src="assets/img/this-is-money.png" alt="this-is-money"
+          style="width: 100%" /></a>
+    </div>
+    <div class="col-md-2">
+      <a href="https://www.marketwatch.com/"><img src="assets/img/market-watch.png" alt="market-watch"
+          style="width: 100%" /></a>
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+<br />
+
+<footer id="footer" class="bg-light text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Copyright:
+    <a class="text-dark" href="https://github.com/lyubomir-l1">Lyubomir Lyubenov</a>
+  </div>
+  <!-- Copyright -->
+</footer>

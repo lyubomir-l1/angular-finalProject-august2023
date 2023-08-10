@@ -15,7 +15,7 @@ namespace Finances.Services.Expenses.Commands
 
         public decimal Total { get; set; }
 
-        public string Note { get; set; } = default!;
+        public string? Note { get; set; } 
 
         public int CategoryId { get; set; }
 

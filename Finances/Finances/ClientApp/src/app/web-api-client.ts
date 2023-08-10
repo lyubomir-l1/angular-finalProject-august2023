@@ -2527,7 +2527,7 @@ export class CreateExpenseCommand implements ICreateExpenseCommand {
     merchant?: string;
     date?: string;
     total?: number;
-    note?: string;
+    note?: string | undefined;
     categoryId?: number;
     userId?: string;
 
@@ -2574,7 +2574,7 @@ export interface ICreateExpenseCommand {
     merchant?: string;
     date?: string;
     total?: number;
-    note?: string;
+    note?: string | undefined;
     categoryId?: number;
     userId?: string;
 }
@@ -2584,7 +2584,7 @@ export class UpdateExpenseCommand implements IUpdateExpenseCommand {
     merchant?: string;
     date?: string;
     total?: number;
-    note?: string;
+    note?: string | undefined;
     categoryId?: number;
     userId?: string;
 
@@ -2634,7 +2634,7 @@ export interface IUpdateExpenseCommand {
     merchant?: string;
     date?: string;
     total?: number;
-    note?: string;
+    note?: string | undefined;
     categoryId?: number;
     userId?: string;
 }

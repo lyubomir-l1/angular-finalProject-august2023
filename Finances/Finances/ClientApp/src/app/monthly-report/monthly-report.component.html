@@ -1,1 +1,81 @@
-<p>monthly-report works!</p>
+<h2>Monthly Report</h2>
+<br/>
+<form>
+    <div class="row">
+      <div class="col">
+        <input name="month" type="number" min="1" max="12" class="form-control" placeholder="Month" [(ngModel)]="selectedMonth">
+      </div>
+      <div class="col">
+        <input name="year" type="text" min="2000" max="2120" class="form-control" placeholder="Year" [(ngModel)]="selectedYear">
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary" (click)="getMonthlyReport(selectedMonth, selectedYear)" >Filter</button>
+      </div>
+    </div>
+</form>
+
+<br/>
+<div class="row">
+    <div class="col-md-6">
+        <h4>Monthly Incomes</h4>
+        <table class="table">
+            <thead class='thead-dark'>
+                <tr>
+                    <th className="firstColumn">Category</th>
+                    <th className="secondColumn centered">Type</th>
+                    <th className="centered">Monthly</th>
+                    <th className="centered">Proportion</th>
+                </tr>    
+            </thead>   
+            <tbody>
+               <tr *ngFor="let income of incomes">
+                    <td>{{income.name}}</td>
+                    <td class="centered">{{income.typeId}}</td>
+                    <td class="centered">{{income.sum!.toFixed(2)}}</td>
+                    <td class="centered">{{(income.sum === 0 ? 0 : (income.sum! / totalIncomes!) * 100).toFixed(2)}} %</td>
+                </tr> 
+                <tr class="table-primary totals-row">                        
+                    <td colSpan="2">Total</td>
+                    <td className="centered">{{(totalIncomes).toFixed(2)}} lv.</td>
+                    <td className="centered">{{totalIncomes === 0 ? 0 : 100}}%</td>
+                </tr>
+                <tr class="table-success totals-row">
+                    <td>Pay To Yourself First</td>
+                    <td class="centered">6</td>
+                    <td colSpan="2" class="centered">{{(totalIncomes * payToYourself).toFixed(2)}} lv.</td>
+                </tr>
+            </tbody>                    
+        </table>
+    </div>
+    <div class="col-md-6">
+        <h4>Monthly Expenses</h4>
+        <table class="table">
+            <thead class='thead-dark'>
+                <tr>
+                    <th className="firstColumn">Category</th>
+                    <th className="secondColumn centered">Type</th>
+                    <th className="centered">Monthly</th>
+                    <th className="centered">Proportion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let expense of expenses">
+                    <td>{{expense.name}}</td>
+                    <td class="centered">{{expense.typeId}}</td>
+                    <td class="centered">{{expense.sum!.toFixed(2)}}</td>
+                    <td class="centered">{{(expense.sum === 0 ? 0 : (expense.sum! / totalExpenses!) * 100).toFixed(2)}} %</td>
+                </tr>
+                <tr class="table-primary totals-row">                        
+                    <td colSpan="2">Total</td>
+                    <td className="centered">{{(totalExpenses).toFixed(2)}} lv.</td>
+                    <td className="centered">{{totalIncomes === 0 ? 0 : 100}}%</td>
+                </tr>
+                <tr class="table-success totals-row">
+                    <td>Net Cashflow</td>
+                    <td class="centered">10</td>
+                    <td colSpan="2" class="centered">{{(totalIncomes - (totalIncomes * payToYourself) - totalExpenses).toFixed(2)}} lv.</td>
+                </tr>   
+            </tbody> 
+        </table>
+    </div>
+</div>

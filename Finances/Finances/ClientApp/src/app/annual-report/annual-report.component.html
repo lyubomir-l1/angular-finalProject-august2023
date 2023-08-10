@@ -3,12 +3,15 @@
 <form>
     <div class="row">
       
-      <div class="col">
+      <div class="col-md-3">
         <input name="year" type="text" min="2000" max="2120" class="form-control" placeholder="Year" [(ngModel)]="selectedYear">
       </div>
       <div class="col">
         <button type="submit" class="btn btn-primary" (click)="getAnnualReport(selectedYear)" >Filter</button>
       </div>
+
+      <br/>
+      <br/>
       <table class="table">
         <thead class='thead-dark'>
             <tr>
