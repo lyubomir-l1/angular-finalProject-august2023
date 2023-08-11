@@ -76,9 +76,7 @@ export class IncomesComponent implements OnInit {
   }
 
   updateIncome() {
-    this.incomesClient.income_Update(this.updateCommand).subscribe(result => {
-      this.updateCommand = new UpdateIncomeCommand();
-      this.isEdit = false;
+    this.incomesClient.income_Update(this.updateCommand).subscribe(result => {    
       this.refreshState();
     }, error => console.error(error));
   }
@@ -96,6 +94,8 @@ export class IncomesComponent implements OnInit {
     this.incomesClient.income_GetAll(this.selectedMonth, this.selectedYear, this.userId).subscribe(result => {
       this.incomes = result.list!;
     }, error => console.error(error));
+    this.updateCommand = new UpdateIncomeCommand();
+    this.isEdit = false;
   }
 }
 

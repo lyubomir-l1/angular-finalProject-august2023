@@ -61,13 +61,10 @@ export class ExpensesComponent implements OnInit {
     this.updateCommand.note = income?.note;
     this.updateCommand.categoryId = this.expenseCategories.find(x => x.name === income?.category)?.id!;
     this.updateCommand.userId = this.userId;
-    console.log(this.updateCommand.note);
   }
 
   updateExpense() {
     this.expensesClient.expense_Update(this.updateCommand).subscribe(result => {
-      this.updateCommand = new UpdateExpenseCommand();
-      this.isEdit = false;
       this.refreshState();
     }, error => console.error(error));
   }
@@ -84,6 +81,8 @@ export class ExpensesComponent implements OnInit {
     this.expensesClient.expense_GetAll(this.selectedMonth, this.selectedYear, this.userId).subscribe(result => {
       this.expenses = result!;
     }, error => console.error(error));
+    this.updateCommand = new UpdateExpenseCommand();
+    this.isEdit = false;
   }
 }
 
