@@ -42,15 +42,6 @@ export class IncomesComponent implements OnInit {
     this.refreshState();
   }
 
-  // validateCreate(): boolean | undefined{
-  //   if (this.createCommand.merchant?.length! > 10){
-  //     this.merchantValidation = true;
-  //     return false;
-  //   }else{
-  //     return true;
-  //   }
-  // }
-
   
   createIncome() {
     this.incomesClient.income_Create(this.createCommand).subscribe(result => {
